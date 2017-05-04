@@ -1,0 +1,95 @@
+/*Muhammad Shahid*/
+html
+{
+	background-color:black;
+	color:white;
+	background-image:url("gta6.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: right bottom;
+	z-index:-1;
+}
+a
+{
+	color:white;
+}
+@font-face 
+{		
+	font-family: myFirstFont;
+	src: url(Exo2-Bold.ttf);
+}
+html
+{
+	background-color:black;
+	color:white;
+	font-family: myFirstFont;
+}
+ul 
+{
+	list-style-type:none;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	font-family: myFirstFont;
+}
+ul li
+{
+	background-color:green;
+	display:inline-block;
+	margin-left:30px;
+	width:150px;
+	margin-top:5px;
+	border:solid white;
+	padding: 2px 5px;
+	cursor:pointer;
+	vertical-align:top;
+	text-align:center;
+	color:white;
+	border-radius:8px;
+	font-family: myFirstFont;
+}
+ul li:hover ul
+{
+	display:block;
+	font-family: myFirstFont;
+}
+ul img
+{
+	display:none;
+	position:absolute;
+	width:500px;
+	top:400px;
+	left:100px;
+	font-family: myFirstFont;
+}
+ul li ul
+{
+	display:none;
+}
+ul li ul li
+{
+	display:block;
+	margin-left:-45px;
+	border-style:none;
+	font-family: myFirstFont;
+}
+ul li ul li:hover
+{
+	background-color:black;
+	color:white;
+	font-family: myFirstFont;
+}
+ul li:hover
+{
+	background-color:black;
+	color:white;
+	font-family: myFirstFont;
+}
+button
+{
+	background-color:green;
+	width: 90px;
+	height: 40px;
+	color:white;
+	font-family: myFirstFont;
+}

@@ -1,0 +1,478 @@
+<!doctype html>
+<!--Hammad Shahid-->
+<html id = "htmlid" onclick = "shoot()" onkeypress = "reload()">
+	<head>
+	<title>
+		Protect Mealworms
+	</title>
+		<link rel="stylesheet" type="text/css" href="mystyle.css">
+		<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+		<style>
+			html 
+			{
+				background-color:brown;
+			}
+			img
+			{
+				position:absolute;
+			}
+			html
+			{
+				cursor:crosshair;
+			}
+			#instructions
+			{
+				text-align:center;
+				font-family: 'Ubuntu', sans-serif
+			}
+			#btn, #resetid
+			{
+				margin-left:auto;
+				margin-right:auto;
+				text-align:center;
+				color:white;
+			}
+			#pauseid2, #pauseid3, #pauseid4, #pauseid5, #resetid, #rld, #lol, #rndstage, #pauseid6, #resetdiv, #pauseid7, #formid, #scoreformid
+			{
+				display:none;
+			}
+			#rld, #count, #roundfinish, #lol, #rndstage
+			{
+				position:absolute;
+				right:3px;
+				font-family: 'Press Start 2P', cursive;
+			}
+			#pauseid2, #pauseid3, #pauseid4, #pauseid5, #continueid, #gameoverid, #pauseid6, #btnid, #resetdiv, #pauseid7, #scoreformid
+			{
+				text-align:center;
+				margin-left:auto;
+				margin-right:auto;
+				font-family: 'Press Start 2P', cursive;
+			}
+			button, #submitid
+			{
+				background-color:green;
+				width: 90px;
+				height: 40px;
+				color:white;
+				font-family: 'Press Start 2P', cursive;
+			}
+			#nameid
+			{
+				font-family: 'Press Start 2P', cursive;
+			}
+		</style>
+		<script>
+			running = false;
+			rounds1 = true;
+			rounds2 = false;
+			rounds3 = false;
+			rounds4 = false;
+			rounds5 = false;
+			rounds6 = false;
+			test = 0;
+			count = 0;
+			ammo = 6;
+			roundNumber = 1;
+			function initialize()
+			{
+				running = true;
+				div = document.getElementById("instructions");
+				div.parentNode.removeChild(div);
+				button = document.getElementById("btn");
+				button.parentNode.removeChild(button);
+				document.getElementById("rld").style.display = "block";
+				document.getElementById("lol").style.display = "block";
+				document.getElementById("rndstage").style.display = "block";
+				round1();
+				document.getElementById("newroundAid").play();
+			}
+			function initialize1()
+			{
+				running = true;
+				round1();
+				document.getElementById("newroundAid").play();
+				document.getElementById("gameoverid").style.display = "none";
+				document.getElementById("menubar").style.display = "none";
+			}
+			function shoot()
+			{
+				if(running == true)
+				{
+					ammo--;
+					if(ammo == 0)
+					{
+						document.getElementById("htmlid").style.cursor = "not-allowed";
+					}
+					if(ammo >=0)
+					{
+						document.getElementById("count").innerHTML = "Ammo: " + ammo;
+						document.getElementById("shootAid").play();
+					}
+				}
+			}
+			function reload()
+			{
+				ammo = 6;
+				document.getElementById("htmlid").style.cursor = "crosshair";
+				document.getElementById("count").innerHTML = "Ammo: " + ammo;
+				document.getElementById("reloadAid").play();
+			}
+			function disappear(count)
+			{
+				test++;
+				if(ammo > 0)
+				{
+					document.getElementById("lol").innerHTML = "Score: " + test;
+					image = document.getElementById(count);
+					image.parentNode.removeChild(image); //Removes image tag
+				}
+			}
+			function round1()
+			{
+				document.getElementById("rndstage").innerHTML = "Pre-egg Stage";
+				document.getElementById("menubar").style.display = "none";
+				roundOne = setInterval(function(){start()}, 1000);
+				time1 = setTimeout(function(){stop(1)}, 15000);
+				roundNumber = 2;
+			}
+			function round2()
+			{
+				document.getElementById("newroundAid").play();
+				document.getElementById("rndstage").innerHTML = "Egg Stage";
+				document.getElementById("menubar").style.display = "none";
+				rounds2 = true;
+				rounds1 = false;
+				document.getElementById("pauseid2").style.display = "none";
+				roundTwo = setInterval(function(){start()}, 800);
+				time2 = setTimeout(function(){stop(2)}, 17500);
+				roundNumber = 3;
+			}
+			function round3()
+			{
+				document.getElementById("newroundAid").play();
+				document.getElementById("rndstage").innerHTML = "Larvae Stage";
+				document.getElementById("menubar").style.display = "none";
+				rounds3 = true;
+				rounds2 = false;
+				document.getElementById("pauseid3").style.display = "none";
+				roundThree = setInterval(function(){start()}, 600);
+				time3 = setTimeout(function(){stop(3)}, 20000);
+			}
+			function round4()
+			{
+				document.getElementById("newroundAid").play();
+				document.getElementById("rndstage").innerHTML = "Pupa Stage";
+				document.getElementById("menubar").style.display = "none";
+				rounds4 = true;
+				rounds3 = false;
+				document.getElementById("pauseid4").style.display = "none";
+				roundFour = setInterval(function(){start()}, 550);
+				time4 = setTimeout(function(){stop(4)}, 22500);
+			}
+			function round5()
+			{
+				document.getElementById("newroundAid").play();
+				document.getElementById("rndstage").innerHTML = "Adult Stage";
+				document.getElementById("menubar").style.display = "none";
+				rounds5 = true;
+				rounds4 = false;
+				document.getElementById("pauseid5").style.display = "none";
+				roundFive = setInterval(function(){start()}, 500);
+				time5 = setTimeout(function(){stop(5)}, 25000);
+			}
+			function bonus()
+			{
+				document.getElementById("newroundAid").play();
+				document.getElementById("rndstage").innerHTML = "Bonus!";
+				document.getElementById("menubar").style.display = "none";
+				rounds6 = true;
+				rounds5 = false;
+				document.getElementById("pauseid6").style.display = "none";
+				roundSix = setInterval(function(){bonusStart()}, 5);
+				time6 = setTimeout(function(){stop(6)}, 15000);
+			}
+			function start() 
+			{
+				imageTag = document.createElement("IMG"); //Creates image tag
+				w = window.innerWidth - 300;//finds width of web page
+				h = window.innerHeight - 150;//finds height of web page
+				x = Math.floor(Math.random() * (w)) + 1; //finds a random width that can be used for x coordinate that fits within site
+				y = Math.floor(Math.random() * (h)) + 1; //finds a random height that can be used for y coordinate that fits within site
+				imageTag.style.left = x + "px"; //Sets the style attribute that will be in the image tag that was created earlier
+				imageTag.style.top = y + "px"; //Sets the style attribute that will be in the image tag that was created earlier
+				imageTag.setAttribute("src", "testudo.png"); //sets the image tags source
+				count++;
+				imageTag.setAttribute("onclick", "disappear("+count+")");
+				imageTag.setAttribute("id", count);
+				document.body.appendChild(imageTag); //appends the image tag created
+				images = document.images.length;
+				if(images > 8)
+				{
+					document.getElementById("loseAid").play();
+					document.getElementById("menubar").style.display = "block";
+					var images = document.getElementsByTagName('img');
+					var l = images.length;
+					for (var i = 0; i < l; i++) {
+						images[0].parentNode.removeChild(images[0]);
+					}
+					document.getElementById("gameoverid").innerHTML = "Game Over";
+					document.getElementById("gameoverid").style.display = "block";
+					document.getElementById("htmlid").style.backgroundImage = "url('pepelarge.png')";
+					document.getElementById("formid").style.display = "block";
+					document.getElementById("scoreformid").value = test;
+					clearInterval(roundOne);
+					if(rounds2 == true)
+					{
+						clearInterval(roundTwo);
+						clearTimeout(time2);
+					}
+					if(rounds3 == true)
+					{
+						clearInterval(roundThree);
+						clearTimeout(time3);
+					}
+					if(rounds4 == true)
+					{
+						clearInterval(roundFour);
+						clearTimeout(time4);
+					}
+					if(rounds5 == true)
+					{
+						clearInterval(roundFive);
+						clearTimeout(time5);
+					}
+					if(rounds6 == true)
+					{
+						clearInterval(roundSix);
+						clearTimeout(time6);
+					}
+					clearTimeout(time1);
+					document.getElementById("resetid").style.display = "block";
+				}
+			}
+			function bonusStart()
+			{
+				imageTag = document.createElement("IMG"); //Creates image tag
+				w = window.innerWidth - 300;//finds width of web page
+				h = window.innerHeight - 150;//finds height of web page
+				x = Math.floor(Math.random() * (w)) + 1; //finds a random width that can be used for x coordinate that fits within site
+				y = Math.floor(Math.random() * (h)) + 1; //finds a random height that can be used for y coordinate that fits within site
+				imageTag.style.left = x + "px"; //Sets the style attribute that will be in the image tag that was created earlier
+				imageTag.style.top = y + "px"; //Sets the style attribute that will be in the image tag that was created earlier
+				imageTag.setAttribute("src", "oatmeal.png"); //sets the image tags source
+				count++;
+				imageTag.setAttribute("onclick", "disappear("+count+")");
+				imageTag.setAttribute("id", count);
+				document.body.appendChild(imageTag); //appends the image tag created
+				images = document.images.length;
+			}
+			function stop(round)
+			{
+				if(round == 1)
+				{
+					clearInterval(roundOne);
+					pause(2);
+					var images = document.getElementsByTagName('img');
+					var l = images.length;
+					for (var i = 0; i < l; i++) {
+						images[0].parentNode.removeChild(images[0]);
+					}
+				}
+				if(round == 2)
+				{
+					clearInterval(roundTwo);
+					pause(3);
+					var images = document.getElementsByTagName('img');
+					var l = images.length;
+					for (var i = 0; i < l; i++) {
+						images[0].parentNode.removeChild(images[0]);
+					}
+				}
+				if(round == 3)
+				{
+					clearInterval(roundThree);
+					pause(4);
+					var images = document.getElementsByTagName('img');
+					var l = images.length;
+					for (var i = 0; i < l; i++) {
+						images[0].parentNode.removeChild(images[0]);
+					}
+				}
+				if(round == 4)
+				{
+					clearInterval(roundFour);
+					pause(5);
+					var images = document.getElementsByTagName('img');
+					var l = images.length;
+					for (var i = 0; i < l; i++) {
+						images[0].parentNode.removeChild(images[0]);
+					}
+				}
+				if(round == 5)
+				{
+					clearInterval(roundFive);
+					pause(6);
+					var images = document.getElementsByTagName('img');
+					var l = images.length;
+					for (var i = 0; i < l; i++) {
+						images[0].parentNode.removeChild(images[0]);
+					}
+				}
+				if(round == 6)
+				{
+					clearInterval(roundSix);
+					pause(7);
+					var images = document.getElementsByTagName('img');
+					var l = images.length;
+					for (var i = 0; i < l; i++) {
+						images[0].parentNode.removeChild(images[0]);
+					}
+				}
+			}
+			function pause(roundNumber)
+			{
+				if(roundNumber == 2)
+				{
+					document.getElementById("pauseid2").style.display = "block";
+					document.getElementById("menubar").style.display = "block";
+				}
+				if(roundNumber == 3)
+				{
+					document.getElementById("pauseid3").style.display = "block";
+					document.getElementById("menubar").style.display = "block";
+				}
+				if(roundNumber == 4)
+				{
+					document.getElementById("pauseid4").style.display = "block";
+					document.getElementById("menubar").style.display = "block";
+				}
+				if(roundNumber == 5)
+				{
+					document.getElementById("pauseid5").style.display = "block";
+					document.getElementById("menubar").style.display = "block";
+				}
+				if(roundNumber == 6)
+				{
+					document.getElementById("pauseid6").style.display = "block";
+					document.getElementById("menubar").style.display = "block";
+				}
+				if(roundNumber == 7)
+				{
+					document.getElementById("pauseid7").style.display = "block";
+					document.getElementById("menubar").style.display = "block";
+					document.getElementById("formid").style.display = "block";
+					document.getElementById("scoreformid").value = test;
+					document.getElementById("htmlid").style.backgroundImage = "url('snoop.gif')";
+					document.getElementById("snoopid").play();
+				}
+			}
+			function reset()
+			{
+				running = false;
+				rounds1 = true;
+				rounds2 = false;
+				rounds3 = false;
+				rounds4 = false;
+				rounds5 = false;
+				rounds6 = false;
+				test = 0;
+				count = 0;
+				ammo = 6;
+				roundNumber = 1;
+				var images = document.getElementsByTagName('img');
+				var l = images.length;
+				for (var i = 0; i < l; i++) {
+					images[0].parentNode.removeChild(images[0]);
+				}
+				initialize1();
+				document.getElementById("resetid").style.display = "none";
+				document.getElementById("htmlid").style.backgroundImage = "url('gta6.jpg')";
+				document.getElementById("formid").style.display = "none";
+			}
+			function loadAudio()
+			{
+				document.getElementById("loadpageAid").play();
+			}
+		</script>
+	</head>
+	<body>
+		<span id = "menubar">
+			<ul>
+			
+			<a href = "character info.html"><li>
+				Home
+				
+			</li></a>
+			<a href = "food.html"><li>
+				Feed Mealworms
+				
+			</li></a>
+			
+					<a href = "mini game 1.html"><li>
+						Protect Testudo
+						
+					</li></a>
+		</ul>
+		</span>
+		<div id = "instructions"><h3>Turtles are attacking your mealworms, defend them!</h3></div>
+		<div id = "btnid"><button id = "btn" onclick = "initialize()">Start</button></div>
+		<div id = "rndstage"></div></br>
+		<div id = "lol">0</div></br>
+		<div id = "count"></div></br>
+		<button id = "rld" onclick = "reload()">Reload</button></br></br>
+		<div id = "pauseid2"></br></br></br>
+			Week 0 finished! Eggs have been layed.<span id = "roundfinish"></span></br>
+			<button id = "continueid" onclick = "round2()">Next</button></br></br></br>
+		</div>
+		<div id = "pauseid3"></br></br></br>
+			Week 4 finished! Eggs are beginning to hatch.<span id = "roundfinish"></span></br>
+			<button id = "continueid" onclick = "round3()">Next</button></br></br></br>
+		</div>
+		<div id = "pauseid4"></br></br></br>
+			Week 15 finished! Larvae is turning into Pupa.<span id = "roundfinish"></span></br>
+			<button id = "continueid" onclick = "round4()">Next</button></br></br></br>
+		</div>
+		<div id = "pauseid5"></br></br></br>
+			Week 18 finished! Pupa transformed to adult.<span id = "roundfinish"></span></br>
+			<button id = "continueid" onclick = "round5()">Next</button></br></br></br>
+		</div>
+		<div id = "pauseid6"></br></br></br>
+			Spider attacks finished, onto Bonus Stage.<span id = "roundfinish"></span></br>
+			<button id = "continueid" onclick = "bonus()">Next</button></br></br></br>
+		</div>
+		<div id = "pauseid7"><h1>You Win!</h1></br></br></br>
+		</div></br>
+		<div id = "count"></div></br>
+		<button id = "rld" onclick = "reload()">Reload</button></br></br>
+		<h1 id = "gameoverid"></h1>
+		<div = "resetdiv"><button id = "resetid" onclick = "reset()">reset</button></div>
+		<audio id = "shootAid">
+			<source src="2AH.wav" type="audio/wav">
+		</audio>
+		<audio id = "newroundAid">
+			<source src="new round.wav" type="audio/wav">
+		</audio>
+		<audio id = "loseAid">
+			<source src="lose.wav" type="audio/wav">
+		</audio>
+		<audio id = "loadpageAid">
+			<source src="load page.wav" type="audio/wav">
+		</audio>
+		<audio id = "reloadAid">
+			<source src="reload.wav" type="audio/wav">
+		</audio>
+		<audio id = "snoopid" loop>
+			<source src="Snoop Dogg ft Dr Dre  Next episode instrumental_cutted.mp3" type="audio/mpeg">
+		</audio>
+		<form id = "formid" method = "post" action = "confirm.php">
+			<span id = "nameid">Name:</span><input type = "text" name = "name"/>
+			<input id = "scoreformid" type = "number" name = "score" required/>
+			<input id = "submitid" type = "submit" value = "submit"/>
+		</form>
+		<script>
+			loadAudio();
+		</script>
+	</body>
+</html>
